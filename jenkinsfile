@@ -18,12 +18,12 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                sh '
+                sh '''
                 trivy image \
                 --severity CRITICAL \
                 --exit-code 1 \
                 flask-trivy-app
-                '
+                '''
             }
         }
     }
