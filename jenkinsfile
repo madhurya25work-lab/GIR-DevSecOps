@@ -5,7 +5,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                checkout scm
+                 git branch: 'main',
+                url: 'https://github.com/madhurya25work-lab/GIR-DevSecOps.git'
             }
         }
 
@@ -17,12 +18,12 @@ pipeline {
 
         stage('Trivy Scan') {
             steps {
-                sh '''
+                sh '
                 trivy image \
                 --severity CRITICAL \
                 --exit-code 1 \
                 flask-trivy-app
-                '''
+                '
             }
         }
     }
